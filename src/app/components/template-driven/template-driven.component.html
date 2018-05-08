@@ -1,9 +1,9 @@
 <form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)" class="form col-lg-3 col-offset-2">
   <div class="form-group row">
-   <input type="text" class="form-control" name="emailid" placeholder="emailid" #emailid="ngModel" ngModel required email>
+   <input type="email" class="form-control" name="emailid" placeholder="emailid" #emailid="ngModel" ngModel required email>
    <span class="span-error" *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)">
-     <div *ngIf="passwd.errors.required">Email requerido. </div>
-     <div *ngIf="passwd.errors.email">Formato de email incorrecto.</div>
+     <div *ngIf="emailid.errors.required">Email requerido. </div>
+     <div *ngIf="emailid.errors.email">Formato de email incorrecto.</div>
    </span>
  </div>
 
