@@ -17,5 +17,7 @@ export class TemplateDrivenComponent implements OnInit {
 
   onClickSubmit(data) {
     this.emailId = data.emailid;
+
+    console.log(data);
   }
 }
