@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-model-driven',
@@ -7,16 +7,32 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./model-driven.component.css']
 })
 export class ModelDrivenComponent implements OnInit {
-  formData;
+  formData: FormGroup;
+  emailid: FormControl;
+  passwd: FormControl;
   emailId:string;
 
   constructor() { }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+  }
+
+  private createForm(){
     this.formData = new FormGroup({
-      emailid : new FormControl("hola@chao.com"),
-      passwd : new FormControl("1234")
+      emailid : this.emailid,
+      passwd : this.passwd
     });
+  }
+
+  private createFormControls(){
+    this.emailid = new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]);
+
+    this.passwd = new FormControl('', Validators.required);
   }
 
   onClickSubmit(data) {
