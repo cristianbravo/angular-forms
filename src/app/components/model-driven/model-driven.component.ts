@@ -11,8 +11,11 @@ export class ModelDrivenComponent implements OnInit {
   emailid: FormControl;
   passwd: FormControl;
   emailId:string;
+  emailPattern: string;
 
-  constructor() { }
+  constructor() {
+    this.emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+  }
 
   ngOnInit() {
     this.createFormControls();
@@ -29,10 +32,15 @@ export class ModelDrivenComponent implements OnInit {
   private createFormControls(){
     this.emailid = new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.pattern(this.emailPattern)
     ]);
 
-    this.passwd = new FormControl('', Validators.required);
+    this.passwd = new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(8)
+    ]);
   }
 
   onClickSubmit(data) {
