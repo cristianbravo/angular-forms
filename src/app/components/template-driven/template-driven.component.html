@@ -1,0 +1,18 @@
+<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)" class="form col-lg-3 col-offset-2">
+  <div class="form-group row">
+   <input type="text" class="form-control" name="emailid" placeholder="emailid" ngModel required email>
+ </div>
+
+  <div class="form-group row">
+   <input type="password" class="form-control"  name="passwd" placeholder="passwd" ngModel required>
+  </div>
+
+  <div class="form-group row">
+    <input type="submit" value="Enviar" class="btn btn-primary">
+    <input type="reset" value="Limpiar" class="btn btn-secondary" style="margin-left:3px;">
+  </div>
+</form>
+
+<p *ngIf="emailId">
+   Email ingresado : {{emailId}}
+</p>
