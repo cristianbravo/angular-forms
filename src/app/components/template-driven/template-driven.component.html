@@ -1,10 +1,18 @@
 <form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)" class="form col-lg-3 col-offset-2">
   <div class="form-group row">
-   <input type="text" class="form-control" name="emailid" placeholder="emailid" ngModel required email>
+   <input type="text" class="form-control" name="emailid" placeholder="emailid" #emailid="ngModel" ngModel required email>
+   <span class="span-error" *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)">
+     <div *ngIf="passwd.errors.required">Email requerido. </div>
+     <div *ngIf="passwd.errors.email">Formato de email incorrecto.</div>
+   </span>
  </div>
 
   <div class="form-group row">
-   <input type="password" class="form-control"  name="passwd" placeholder="passwd" ngModel required>
+   <input type="password" class="form-control"  name="passwd" placeholder="passwd" #passwd="ngModel" ngModel minlength="3" maxlength="8" required>
+   <span class="span-error" *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)">
+     <div *ngIf="passwd.errors.required">Password requerido. </div>
+     <div *ngIf="passwd.errors.minlength">El password debe ser de al menos 3 caracteres.</div>
+   </span>
   </div>
 
   <div class="form-group row">
