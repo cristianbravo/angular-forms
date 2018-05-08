@@ -36,11 +36,13 @@ export class ModelDrivenComponent implements OnInit {
       Validators.pattern(this.emailPattern)
     ]);
 
-    this.passwd = new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(8)
-    ]);
+    this.passwd = new FormControl('', this.passwdCustom);
+  }
+
+  private passwdCustom(formControl : FormControl){
+    if (formControl.value == 'hola'){
+      return { 'passwd' : true };
+    }
   }
 
   onClickSubmit(data) {

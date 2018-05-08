@@ -11,8 +11,7 @@
   <div class="form-group row">
    <input type="password" class="form-control"  name="passwd" placeholder="passwd" formControlName="passwd">
    <span class="span-error" *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)">
-     <div *ngIf="passwd.errors.required">Password requerido. </div>
-     <div *ngIf="passwd.errors.minlength">El password debe ser de al menos 3 caracteres.</div>
+     <div *ngIf="passwd.errors">Password requerido = hola. </div>
    </span>
   </div>
 
