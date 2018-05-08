@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-model-driven',
   templateUrl: './model-driven.component.html',
@@ -36,7 +37,9 @@ export class ModelDrivenComponent implements OnInit {
       Validators.pattern(this.emailPattern)
     ]);
 
-    this.passwd = new FormControl('', this.passwdCustom);
+    this.passwd = new FormControl('', [
+      this.passwdCustom
+    ]);
   }
 
   private passwdCustom(formControl : FormControl){
