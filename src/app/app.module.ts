@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TemplateDrivenComponent } from './components/template-driven/template-driven.component';
+import { ModelDrivenComponent } from './components/model-driven/model-driven.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenComponent
+    TemplateDrivenComponent,
+    ModelDrivenComponent
   ],
   imports: [
     BrowserModule,
